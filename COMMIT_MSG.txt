@@ -1,0 +1,35 @@
+v1.0: فهرس · Fihris — Workshop-DIY App Catalog
+
+Interactive catalog of 102+ Workshop-DIY apps with 5 exploration views.
+Single HTML file, zero dependencies, responsive, offline-ready.
+
+Views:
+- 📋 List: categorized rows with search + filter pills
+- 🃏 Cards: trading card grid with CSS 3D flip (Alhambra borders)
+- ⚗️ Periodic: element-style grid, color-coded by category
+- 💻 Terminal: fake CLI with 8 commands, tab autocomplete, arrow history
+- 🌌 Galaxy: animated canvas constellation, hover tooltips, click-to-open
+
+Data:
+- 104 app entries across 13 categories
+- 86 GitHub repos + 16 standalone tools + 2 planned
+- Each app: emoji, name, category, description, status, links
+
+Features:
+- Live search across all views
+- 13 category filter toggles
+- Sound FX toggle (Web Audio API)
+- Intro animation with counter 0→102
+- Export: copy Markdown, download CSV, print-friendly CSS
+- localStorage: remembers view preference + intro skip
+- بِسْمِ ٱللَّهِ in intro, header, and footer
+
+Stack: HTML + CSS + JS + Canvas API + Google Fonts (Outfit, JetBrains
+Mono, Amiri). No build step, no framework, no npm.
+
+Docs: README.md, README.html (water.css dark theme + Bismillah header)
+
+Files:
+  index.html     — the app (825 lines)
+  README.md      — project documentation
+  README.html    — styled HTML documentation

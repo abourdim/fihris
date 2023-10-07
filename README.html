@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>�������� �� Fihris ��� README</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body{font-family:'Outfit',sans-serif;max-width:800px;margin:0 auto;padding:20px}
+    h1,h2,h3{font-family:'Outfit',sans-serif}
+    .bism{text-align:center;font-family:'Amiri',serif;font-size:22px;color:#d4a017;padding:16px 0;opacity:.85}
+    .bism::before,.bism::after{content:'✦';margin:0 10px;font-size:10px;vertical-align:middle;opacity:.4}
+    code{font-size:0.85em}
+    blockquote{border-left-color:#d4a017;font-style:italic;color:#a0a0a0}
+    a{color:#00d4aa}
+    table{font-size:0.9em}
+  </style>
+</head>
+<body>
+<div class="bism">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+<header id="title-block-header">
+<h1 class="title">�������� �� Fihris ��� README</h1>
+</header>
+<h1 id="بسم-ٱلله-ٱلرحمن-ٱلرحيم">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</h1>
+<h1 id="فهرس-fihris">فهرس · Fihris</h1>
+<p><strong>The Workshop-DIY App Catalog</strong></p>
+<blockquote>
+<p>102+ apps · 13 categories · 86 GitHub repos · 5 views · 1 file</p>
+</blockquote>
+<hr />
+<h2 id="what-is-fihris">What is Fihris?</h2>
+<p>Fihris (فهرس) is an interactive catalog of every app built by <a
+href="https://workshop-diy.org">Workshop-DIY</a> — 102+ educational web
+apps for kids covering robotics, IoT, Arabic language, Islamic
+education, cybersecurity, networking, AI, and more.</p>
+<p>The name comes from <strong>كتاب الفهرست</strong> (Kitab al-Fihrist)
+by Ibn al-Nadim (987 CE) — the first comprehensive catalog of books in
+the Islamic world.</p>
+<hr />
+<h2 id="views">5 Views</h2>
+<table>
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 24%" />
+<col style="width: 52%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>View</th>
+<th>Icon</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>List</strong></td>
+<td>📋</td>
+<td>Clean categorized list with search and filters</td>
+</tr>
+<tr class="even">
+<td><strong>Cards</strong></td>
+<td>🃏</td>
+<td>Trading cards with flip animation (Alhambra borders)</td>
+</tr>
+<tr class="odd">
+<td><strong>Periodic</strong></td>
+<td>⚗️</td>
+<td>Periodic table layout, color-coded by category</td>
+</tr>
+<tr class="even">
+<td><strong>Terminal</strong></td>
+<td>💻</td>
+<td>Hacker terminal — type <code>ls</code>, <code>cat</code>,
+<code>find</code>, <code>grep</code>, <code>stats</code></td>
+</tr>
+<tr class="odd">
+<td><strong>Galaxy</strong></td>
+<td>🌌</td>
+<td>Animated constellation map — apps are stars, categories are
+nebulae</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="features">Features</h2>
+<ul>
+<li><strong>Live search</strong> — filters instantly across all
+views</li>
+<li><strong>13 category filters</strong> — click to toggle</li>
+<li><strong>Sound FX</strong> — toggleable click/flip/beep sounds</li>
+<li><strong>Intro animation</strong> — counter from 0 to 102</li>
+<li><strong>Export</strong> — copy as Markdown, download CSV,
+print-friendly</li>
+<li><strong>Terminal</strong> — full CLI with autocomplete (Tab),
+history (↑↓), 8 commands</li>
+<li><strong>Galaxy</strong> — animated canvas with hover tooltips and
+click-to-open</li>
+<li><strong>Responsive</strong> — works on mobile and desktop</li>
+<li><strong>Remembers</strong> your preferred view (localStorage)</li>
+<li><strong>بِسْمِ ٱللَّهِ</strong> — always present (intro, header,
+footer)</li>
+</ul>
+<hr />
+<h2 id="terminal-commands">Terminal Commands</h2>
+<pre><code>ls [category]     List apps (all or by category)
+cat &lt;name&gt;        Show app details
+find &lt;keyword&gt;    Search by name
+grep &lt;keyword&gt;    Search in descriptions
+stats             Show statistics
+open &lt;name&gt;       Open app on GitHub
+categories        List all categories
+clear             Clear terminal
+help              Show commands</code></pre>
+<hr />
+<h2 id="categories">Categories</h2>
+<table>
+<thead>
+<tr class="header">
+<th>#</th>
+<th>Category</th>
+<th>Apps</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>🤖</td>
+<td>micro:bit</td>
+<td>9</td>
+</tr>
+<tr class="even">
+<td>📸</td>
+<td>Camera</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>🕌</td>
+<td>Arabic &amp; Islamic</td>
+<td>17</td>
+</tr>
+<tr class="even">
+<td>🏫</td>
+<td>Classroom</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>📚</td>
+<td>Education — Tech</td>
+<td>14</td>
+</tr>
+<tr class="even">
+<td>🌐</td>
+<td>Networking Labs</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td>🤖</td>
+<td>AI</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td>🛠️</td>
+<td>Tools</td>
+<td>19</td>
+</tr>
+<tr class="odd">
+<td>🎮</td>
+<td>Fun &amp; Creative</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td>🔧</td>
+<td>Infra &amp; Backend</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<td>📦</td>
+<td>Meta &amp; Project</td>
+<td>6</td>
+</tr>
+<tr class="even">
+<td>💼</td>
+<td>Standalone Tools</td>
+<td>9</td>
+</tr>
+<tr class="odd">
+<td>📋</td>
+<td>Planned</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="quick-start">Quick Start</h2>
+<ol type="1">
+<li>Open <code>index.html</code> in any browser</li>
+<li>That’s it — no server, no dependencies, no build step</li>
+</ol>
+<hr />
+<h2 id="tech-stack">Tech Stack</h2>
+<ul>
+<li><strong>HTML + CSS + JS</strong> — single file, zero
+dependencies</li>
+<li><strong>Canvas API</strong> — Galaxy view animation</li>
+<li><strong>Google Fonts</strong> — Outfit, JetBrains Mono, Amiri</li>
+<li><strong>localStorage</strong> — remembers view preference + intro
+skip</li>
+</ul>
+<hr />
+<h2 id="links">Links</h2>
+<ul>
+<li>🌐 <a href="https://workshop-diy.org">workshop-diy.org</a></li>
+<li>🐙 <a
+href="https://github.com/abourdim">github.com/abourdim</a></li>
+<li>📘 <a href="https://www.facebook.com/WorkshopDIY">Facebook —
+Workshop-DIY</a></li>
+</ul>
+<hr />
+<h2 id="license">License</h2>
+<p>MIT — Built with ❤️ and Claude · March 2026</p>
+<hr />
+<blockquote>
+<p><em>“Whoever takes a path seeking knowledge, Allah makes easy for him
+a path to Paradise.”</em> — Prophet Muhammad ﷺ (Sahih Muslim)</p>
+</blockquote>
+</body>
+</html>
