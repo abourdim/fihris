@@ -149,6 +149,7 @@ body{font-family:var(--font);background:var(--void);color:var(--text);min-height
 .pcell[data-cat="infra"]{border-left:3px solid var(--dim)}
 .pcell[data-cat="meta"]{border-left:3px solid var(--muted)}
 .pcell[data-cat="standalone"]{border-left:3px solid var(--sky)}
+.pcell[data-cat="books"]{border-left:3px solid var(--emerald)}
 .pcell[data-cat="planned"]{border-left:3px solid var(--muted)}
 
 /* Periodic tooltip */
@@ -263,9 +264,9 @@ body{font-family:var(--font);background:var(--void);color:var(--text);min-height
 <!-- ═══ STATS BAR ═══ -->
 <div class="stats">
   <div class="stats-inner">
-    <div class="stat"><div class="stat-n" id="statTotal">102</div><div class="stat-l">Apps</div></div>
-    <div class="stat"><div class="stat-n">13</div><div class="stat-l">Categories</div></div>
-    <div class="stat"><div class="stat-n">86</div><div class="stat-l">GitHub Repos</div></div>
+    <div class="stat"><div class="stat-n" id="statTotal">0</div><div class="stat-l">Apps</div></div>
+    <div class="stat"><div class="stat-n" id="statCats">0</div><div class="stat-l">Categories</div></div>
+    <div class="stat"><div class="stat-n" id="statRepos">0</div><div class="stat-l">GitHub Repos</div></div>
     <div class="badges">
       <span class="badge badge-gold">🥇 100+ Apps Legend</span>
       <span class="badge badge-teal">🌍 Trilingual</span>
@@ -325,125 +326,212 @@ body{font-family:var(--font);background:var(--void);color:var(--text);min-height
 
 // ═══ APP DATA ═══
 const APPS=[
-// microbit (9)
-{e:"🤖",n:"bit-bot",c:"microbit",d:"Robot control via browser + BLE",s:"stable",g:1},
-{e:"💬",n:"talking-robot",c:"microbit",d:"A robot that speaks, listens and shows emotions via BLE",s:"stable",g:1},
-{e:"🧠",n:"teachable-machine",c:"microbit",d:"Train AI gestures in browser, send results to micro:bit",s:"stable",g:1},
-{e:"😎",n:"face-tracking",c:"microbit",d:"Kids-friendly face tracking with event triggers + BLE",s:"stable",g:1},
-{e:"😄",n:"bitmoji-lab",c:"microbit",d:"Emoji → 5×5 LED pixel art on micro:bit",s:"stable",g:1},
-{e:"🧩",n:"bit-playground",c:"microbit",d:"The ultimate micro:bit BLE playground",s:"stable",g:1},
-{e:"🎛️",n:"rxy",c:"microbit",d:"Build custom Bluetooth remotes — drag buttons, sliders, D-pads",s:"stable",g:1},
-{e:"🔌",n:"usb-logger",c:"microbit",d:"USB serial browser tool for micro:bit",s:"stable",g:1},
-{e:"📡",n:"ble-logger",c:"microbit",d:"BLE debug playground for micro:bit experiments",s:"stable",g:1},
+// ai (3)
+{e:"🤖",n:"claude-toolkit",c:"ai",d:"🚀 Claude AI CLI Toolkit",s:"stable",g:1},
+{e:"🤖",n:"ollama-bot",c:"ai",d:"🤖 Ollama Bot",s:"stable",g:1},
+{e:"🤖",n:"prompt-hero",c:"ai",d:"Prompt Hero — Workshop DIY",s:"stable",g:1},
+
+// arabic & islamic (22)
+{e:"🕌",n:"amthal",c:"arabic",d:"No description",s:"new",g:1},
+{e:"🕌",n:"arabic-keyboard",c:"arabic",d:"No description",s:"new",g:1},
+{e:"🕌",n:"arabic-speaker",c:"arabic",d:"🗣️ Arabic Speech App (Browser-Only)",s:"stable",g:1},
+{e:"🕌",n:"arabic-translator",c:"arabic",d:"🌐 تطبيق المترجم العربي (يعمل داخل المتصفح)",s:"stable",g:1},
+{e:"🕌",n:"arabic-tts",c:"arabic",d:"MSA Arabic TTS System",s:"stable",g:1},
+{e:"🕌",n:"builders-of-light",c:"arabic",d:"🌙 Builders of Light",s:"stable",g:1},
+{e:"🕌",n:"cowsay",c:"arabic",d:"🐄 CowSay Kids",s:"new",g:1},
+{e:"🕌",n:"eid",c:"arabic",d:"عيد مبارك — Eid News Network 🌙",s:"stable",g:1},
+{e:"🕌",n:"elarabya",c:"arabic",d:"No description",s:"new",g:1},
+{e:"🕌",n:"golden-age",c:"arabic",d:"🌙 What Muslims Gave the World",s:"stable",g:1},
+{e:"🕌",n:"hajj-guide",c:"arabic",d:"🕋 Guide Complet du Hajj 2026",s:"stable",g:1},
+{e:"🕌",n:"halqa",c:"arabic",d:"Halqa — حلقة",s:"stable",g:1},
+{e:"🕌",n:"ierab",c:"arabic",d:"No description",s:"new",g:1},
+{e:"🕌",n:"jisr",c:"arabic",d:"جِسْر — Jisr v1.0",s:"stable",g:1},
+{e:"🕌",n:"kalami",c:"arabic",d:"كلامي · Kalami — Arabic Voice Translator",s:"stable",g:1},
+{e:"🕌",n:"luminaries-of-islam",c:"arabic",d:"✨ Luminaries of Islam — Scientists of the Golden Age",s:"dev",g:1},
+{e:"🕌",n:"nusuk",c:"arabic",d:"Nusuk Hajj — Status Monitor",s:"new",g:1},
+{e:"🕌",n:"piper-arabic-tts",c:"arabic",d:"Piper Arabic TTS (Browser Only)",s:"stable",g:1},
+{e:"🕌",n:"sada",c:"arabic",d:"صدى sada · V1.0",s:"stable",g:1},
+{e:"🕌",n:"salat-times",c:"arabic",d:"🕌 Salat Times — Prayer Times PWA",s:"stable",g:1},
+{e:"🕌",n:"tesbih",c:"arabic",d:"📿 Tesbih",s:"stable",g:1},
+{e:"🕌",n:"tethkir",c:"arabic",d:"تذكير — Tethkir v4.0",s:"stable",g:1},
+
+// islamic books (54)
+{e:"📚",n:"al-dawah-fi-al-qarn",c:"books",d:"📢 Islamic Dawah This Century — الدعوة الإسلامية في القرن الحالي",s:"dev",g:1},
+{e:"📚",n:"al-fasad-al-siyasi",c:"books",d:"🏛️ Political Corruption — الفساد السياسي",s:"dev",g:1},
+{e:"📚",n:"al-ghazali-library",c:"books",d:"📚 Al-Ghazali Interactive Library",s:"new",g:1},
+{e:"📚",n:"al-ghazw-al-thaqafi",c:"books",d:"الغزو الثقافي يمتد في فراغنا — Cultural Invasion Spreads into Our Void",s:"stable",g:1},
+{e:"📚",n:"al-ghirbal",c:"books",d:"⛔ The Sieve — الغربال",s:"dev",g:1},
+{e:"📚",n:"al-hayat-al-ula",c:"books",d:"🌅 The First Life — الحياة الأولى",s:"stable",g:1},
+{e:"📚",n:"al-islam-al-muftara-alayh",c:"books",d:"⚖️ Islam Falsely Accused — الإسلام المفترى عليه",s:"stable",g:1},
+{e:"📚",n:"al-islam-fi-wajh-al-zahf",c:"books",d:"🔴 Islam Facing the Red Tide — الإسلام في وجه الزحف الأحمر",s:"stable",g:1},
+{e:"📚",n:"al-islam-wa-qanun",c:"books",d:"⚖️ Islam & Personal Status Law — الإسلام وقانون الأحوال الشخصية",s:"dev",g:1},
+{e:"📚",n:"al-islam-wal-awda-al-iqtisadiyah",c:"books",d:"💰 Islam and Economic Affairs — الإسلام والأوضاع الاقتصادية",s:"stable",g:1},
+{e:"📚",n:"al-islam-wal-istibdad",c:"books",d:"⚖️ Islam & Political Tyranny — الإسلام والاستبداد السياسي",s:"stable",g:1},
+{e:"📚",n:"al-islam-wal-manahij",c:"books",d:"🟠 Islam and Socialist Systems — الإسلام والمناهج الاشتراكية",s:"stable",g:1},
+{e:"📚",n:"al-istimar",c:"books",d:"🏴 Colonialism: Grudges & Greed — الاستعمار أحقاد وأطماع",s:"dev",g:1},
+{e:"📚",n:"al-janib-al-atifi",c:"books",d:"💗 The Emotional Side of Islam — الجانب العاطفي من الإسلام",s:"stable",g:1},
+{e:"📚",n:"al-mahawir-al-khamsah",c:"books",d:"🔥 The Five Axes of the Quran — المحاور الخمسة للقرآن الكريم",s:"stable",g:1},
+{e:"📚",n:"al-maqlub",c:"books",d:"المقلوب · Al-Maqlub",s:"stable",g:1},
+{e:"📚",n:"al-miraat",c:"books",d:"🪞 The Mirror — المرآة",s:"dev",g:1},
+{e:"📚",n:"al-saaiqa",c:"books",d:"⛈️ The Thunderbolt — الصاعقة",s:"dev",g:1},
+{e:"📚",n:"al-sunnah-al-nabawiyah",c:"books",d:"📜 Prophetic Sunnah — السنة النبوية بين أهل الفقه وأهل الحديث",s:"stable",g:1},
+{e:"📚",n:"al-taassub-wal-tasamuh",c:"books",d:"🕊️ Fanaticism & Tolerance — التعصب والتسامح",s:"stable",g:1},
+{e:"📚",n:"aqidat-al-muslim",c:"books",d:"🕌 عقيدة المسلم — The Muslim's Creed",s:"stable",g:1},
+{e:"📚",n:"ayqidh-taqatak",c:"books",d:"⚡ Awaken Your Energy — أيقظ طاقتك",s:"dev",g:1},
+{e:"📚",n:"difaa-al-aqidah",c:"books",d:"🛡️ Defense of Creed — دفاع عن العقيدة",s:"stable",g:1},
+{e:"📚",n:"dustur-al-wahdah",c:"books",d:"🤝 Charter of Cultural Unity — دستور الوحدة الثقافية بين المسلمين",s:"stable",g:1},
+{e:"📚",n:"fan-al-dhikr",c:"books",d:"🤲 The Art of Dhikr & Dua — فن الذكر والدعاء",s:"stable",g:1},
+{e:"📚",n:"fi-mawkib-al-dawa",c:"books",d:"في موكب الدعوة — In the Procession of Dawah",s:"dev",g:1},
+{e:"📚",n:"fiqh-al-sirah",c:"books",d:"📜 فقه السيرة — Fiqh Al-Sirah",s:"stable",g:1},
+{e:"📚",n:"haqiqat-al-qawmiyah",c:"books",d:"حقيقة القومية العربية — Arab Nationalism: Truth & Myth",s:"stable",g:1},
+{e:"📚",n:"hasad-al-ghurur",c:"books",d:"حصاد الغرور — The Harvest of Arrogance — La Moisson de l'Orgueil",s:"stable",g:1},
+{e:"📚",n:"humum-daiya",c:"books",d:"هموم داعية — Concerns of a Preacher",s:"stable",g:1},
+{e:"📚",n:"huquq-al-insan",c:"books",d:"⚖️ Human Rights — حقوق الإنسان",s:"stable",g:1},
+{e:"📚",n:"iyadat-al-ummah",c:"books",d:"🩺 The Ummah Clinic — عيادة الأمة",s:"dev",g:1},
+{e:"📚",n:"jaddid-hayatak",c:"books",d:"🌅 Renew Your Life — جدد حياتك",s:"dev",g:1},
+{e:"📚",n:"jihad-al-dawah",c:"books",d:"🌿 Jihad of Dawah — جهاد الدعوة بين عجز الداخل وكيد الخارج",s:"stable",g:1},
+{e:"📚",n:"kayfa-nafham",c:"books",d:"كيف نفهم الإسلام — How We Understand Islam",s:"stable",g:1},
+{e:"📚",n:"kayfa-nataamal-maa-al-quran",c:"books",d:"📖 How to Deal with the Quran — كيف نتعامل مع القرآن",s:"stable",g:1},
+{e:"📚",n:"khuluq-al-muslim",c:"books",d:"🌟 خلق المسلم — The Muslim's Character",s:"stable",g:1},
+{e:"📚",n:"khutab-al-ghazali",c:"books",d:"خطب الغزالي — Ghazali's Sermons",s:"stable",g:1},
+{e:"📚",n:"kunuz-min-al-sunnah",c:"books",d:"✨ Treasures from the Sunnah — كنوز من السنة",s:"stable",g:1},
+{e:"📚",n:"maa-allah",c:"books",d:"🕌 With God — مع الله",s:"stable",g:1},
+{e:"📚",n:"marakah-al-mushaf",c:"books",d:"معركة المصحف — Battle of the Quran",s:"stable",g:1},
+{e:"📚",n:"miat-sual",c:"books",d:"مائة سؤال عن الإسلام — 100 Questions About Islam",s:"stable",g:1},
+{e:"📚",n:"min-huna-nalam",c:"books",d:"من هنا نعلم — This Is Where We Learn",s:"stable",g:1},
+{e:"📚",n:"nahwa-tafsir-mawdui",c:"books",d:"🌊 Toward Thematic Quran Interpretation — نحو تفسير موضوعي لسور القرآن",s:"stable",g:1},
+{e:"📚",n:"nazarat-fi-al-quran",c:"books",d:"📖 Insights into the Quran — نظرات في القرآن",s:"stable",g:1},
+{e:"📚",n:"qadaya-al-marah",c:"books",d:"🌹 Women's Issues — قضايا المرأة",s:"stable",g:1},
+{e:"📚",n:"qadhaaif-al-haqq",c:"books",d:"قذائف الحق — Missiles of Truth",s:"stable",g:1},
+{e:"📚",n:"rakaiz-al-iman",c:"books",d:"Pillars of Faith — ركائز الإيمان بين العقل والقلب",s:"stable",g:1},
+{e:"📚",n:"ramadan-wal-siyam",c:"books",d:"📖 رمضان والصيام — Ramadan and Fasting",s:"stable",g:1},
+{e:"📚",n:"rihlati-fikriyah",c:"books",d:"رحلتي الفكرية — عبد الوهاب المسيري",s:"stable",g:1},
+{e:"📚",n:"sayhah-tahdhir",c:"books",d:"📖 صيحة تحذير من دعاة التنصير — Warning Against Missionaries",s:"stable",g:1},
+{e:"📚",n:"shahid-ala-al-asr",c:"books",d:"شاهد على العصر — Ghazali: Witness of the Era",s:"stable",g:1},
+{e:"📚",n:"tarbiyat-al-awlad",c:"books",d:"📖 تربية الأولاد في الإسلام — Tarbiyat al-Awlad",s:"stable",g:1},
+{e:"📚",n:"zalam-min-al-gharb",c:"books",d:"ظلام من الغرب — Darkness from the West",s:"stable",g:1},
+
 // camera (2)
-{e:"🪄",n:"magic-hands",c:"camera",d:"Wave hands to trigger magic effects via camera",s:"stable",g:1},
-{e:"🕵️",n:"face-quest",c:"camera",d:"Facial detection game — 100% local and private",s:"stable",g:1},
-// arabic & islamic (17)
-{e:"🌐",n:"arabic-translator",c:"arabic",d:"Arabic translator running entirely in browser",s:"stable",g:1},
-{e:"🗣️",n:"arabic-speaker",c:"arabic",d:"Arabic TTS + STT using Web Speech API",s:"stable",g:1},
-{e:"🎙️",n:"piper-arabic-tts",c:"arabic",d:"Arabic TTS demo using Piper (WASM)",s:"stable",g:1},
-{e:"⌨️",n:"arabic-keyboard",c:"arabic",d:"Virtual Arabic keyboard for browser",s:"new",g:1},
-{e:"📖",n:"elarabya",c:"arabic",d:"Arabic language learning tools",s:"new",g:1},
-{e:"✏️",n:"ierab",c:"arabic",d:"Arabic grammar (I'rab) interactive exercises",s:"new",g:1},
-{e:"📜",n:"amthal",c:"arabic",d:"Arabic proverbs and wisdom collection",s:"new",g:1},
-{e:"🔔",n:"tethkir",c:"arabic",d:"Islamic Task Manager & Secure Notes PWA (AES-256)",s:"stable",g:1},
-{e:"📝",n:"kalami",c:"arabic",d:"كلامي — Arabic grammar/I'rab interactive app",s:"stable",g:1},
-{e:"🌉",n:"jisr",c:"arabic",d:"جسر — Arabic etymology dictionary (words in FR/EN)",s:"stable",g:1},
-{e:"🔄",n:"al-maqlub",c:"arabic",d:"المقلوب — Arabic palindrome poetry app",s:"stable",g:1},
-{e:"🕌",n:"salat-times",c:"arabic",d:"GPS Prayer Times PWA with Aladhan API",s:"stable",g:1},
-{e:"📿",n:"tesbih",c:"arabic",d:"Digital tasbih counter",s:"stable",g:1},
-{e:"🤲",n:"adhkari",c:"arabic",d:"أذكاري — Islamic invocations app (Alhambra theme)",s:"stable",g:1},
-{e:"⭐",n:"islamic-genius-kids",c:"arabic",d:"Islamic educational quiz app for gifted children",s:"stable",g:0},
-{e:"🌟",n:"luminaries-of-islam",c:"arabic",d:"12 Muslim scientists of the Golden Age (trilingual)",s:"stable",g:1},
-{e:"🏛️",n:"golden-age",c:"arabic",d:"بُناة النور — Builders of Light (830KB, 139 sections)",s:"stable",g:1},
+{e:"📸",n:"face-quest",c:"camera",d:"🧠😄 Face Quest",s:"stable",g:1},
+{e:"📸",n:"magic-hands",c:"camera",d:"✋✨ MAGIC HANDS ✨✋",s:"stable",g:1},
+
 // classroom (2)
-{e:"🚀",n:"mission-control",c:"classroom",d:"Video/chat + command buttons with optional BLE",s:"stable",g:1},
-{e:"🏫",n:"classroom",c:"classroom",d:"PeerJS Cloud Classroom Lite (~12 students)",s:"stable",g:1},
-// education (14)
-{e:"💡",n:"wled-kids-lab",c:"education",d:"Control Neopixel LED strips with WLED",s:"stable",g:1},
-{e:"⚡",n:"esp32-c3-kids-lab",c:"education",d:"Hands-on ESP32-C3 — LEDs, sensors, WiFi",s:"stable",g:1},
-{e:"🪙",n:"crypto-academy",c:"education",d:"Interactive blockchain & cryptocurrency lessons",s:"stable",g:1},
-{e:"🔐",n:"pentest-lab",c:"education",d:"Beginner-friendly cybersecurity sandbox (3 tracks)",s:"stable",g:1},
-{e:"🐧",n:"linux-kids-lab",c:"education",d:"Linux commands in a safe browser sandbox",s:"stable",g:1},
-{e:"🏭",n:"production-chain",c:"education",d:"Simulate an industrial production chain",s:"stable",g:1},
-{e:"🔋",n:"circuit-lab",c:"education",d:"Circuit exploration and experiments in browser",s:"dev",g:1},
-{e:"🧊",n:"3d-lab",c:"education",d:"3D design with Three.js",s:"dev",g:1},
-{e:"🔀",n:"git-lab",c:"education",d:"Learn Git step by step — commit, branch, merge",s:"dev",g:1},
-{e:"💻",n:"code-kids",c:"education",d:"Learn HTML, CSS & JavaScript from scratch",s:"dev",g:1},
-{e:"🌍",n:"save-our-planet",c:"education",d:"Climate change & sustainability lessons",s:"dev",g:1},
-{e:"🧱",n:"makecode-adventures",c:"education",d:"Block-based coding adventures with MakeCode",s:"dev",g:1},
-{e:"🤖",n:"bit-54-activities",c:"education",d:"54 hands-on micro:bit activities",s:"dev",g:1},
-{e:"💰",n:"crypto-vault",c:"education",d:"Cryptography basics — encrypt, hash, keys",s:"dev",g:1},
-// network (10)
-{e:"📡",n:"mqtt-kids-lab",c:"network",d:"MQTT IoT simulator with Islamic geometric design",s:"stable",g:0},
-{e:"🐍",n:"scapy-kids-lab",c:"network",d:"Network packet crafting with Scapy simulation",s:"stable",g:0},
-{e:"🔗",n:"dhcp-lab",c:"network",d:"Python DHCP server with web dashboard",s:"stable",g:1},
-{e:"🐳",n:"docker-lab",c:"network",d:"Docker container experiments",s:"new",g:1},
-{e:"🔴",n:"nodered-lab",c:"network",d:"Node-RED visual programming",s:"new",g:1},
-{e:"👋",n:"bonjour-kids-lab",c:"network",d:"Bonjour/mDNS/DNS-SD protocol lab (23 files)",s:"stable",g:0},
-{e:"📢",n:"avahi",c:"network",d:"Avahi/mDNS educational tool",s:"new",g:1},
-{e:"🦈",n:"tshark",c:"network",d:"Packet analysis with tshark",s:"new",g:1},
-{e:"🔬",n:"pyshark",c:"network",d:"Python packet analysis tool",s:"new",g:1},
-{e:"🏷️",n:"mdns",c:"network",d:"mDNS discovery tool",s:"new",g:1},
-// ai (4)
-{e:"🤖",n:"ollama-bot",c:"ai",d:"Local AI chatbot with Ollama — Byte mascot, personality modes",s:"new",g:1},
-{e:"✨",n:"prompt-hero",c:"ai",d:"Master AI prompting techniques",s:"dev",g:1},
-{e:"🧰",n:"claude-toolkit",c:"ai",d:"Toolkit for building apps with Claude AI",s:"dev",g:1},
-{e:"🎤",n:"msa-arabic-tts",c:"ai",d:"Modern Standard Arabic TTS (VITS, Docker)",s:"dev",g:0},
-// tools (14)
-{e:"🎨",n:"pixel-gateway",c:"tools",d:"Retro pixel art portal — draw, animate, export sprites",s:"stable",g:1},
-{e:"🎭",n:"puppeteer-playground",c:"tools",d:"Browser automation experiments with Puppeteer",s:"stable",g:1},
-{e:"📋",n:"ops-catalog",c:"tools",d:"DevOps tools & workflows catalog",s:"dev",g:1},
-{e:"📊",n:"loggy",c:"tools",d:"Bash log analyzer for EV charger RACC bundles (v7.3)",s:"stable",g:0},
-{e:"🧹",n:"sanitize_names_toolkit",c:"tools",d:"Filename sanitization toolkit",s:"stable",g:1},
-{e:"🖥️",n:"termlite",c:"tools",d:"Network toolkit: DHCP, scanner, pulse (v6.2, Python+web)",s:"stable",g:0},
-{e:"📈",n:"git-pulse",c:"tools",d:"GitHub repo manager CLI + web UI (13-phase roadmap)",s:"dev",g:1},
-{e:"🕐",n:"git-rewrite",c:"tools",d:"Bash tool to rewrite git commit timestamps",s:"stable",g:0},
-{e:"📄",n:"template",c:"tools",d:"Workshop-DIY multi-theme web app template",s:"stable",g:1},
-{e:"🛡️",n:"rocket-shield-vpn",c:"tools",d:"Visual VPN & network security guide",s:"dev",g:1},
-{e:"🏡",n:"smart-home",c:"tools",d:"Smart home dashboard — sensors, lights, automations",s:"dev",g:1},
-{e:"📱",n:"qrcodes",c:"tools",d:"QR code generator",s:"new",g:1},
-{e:"😜",n:"emojis",c:"tools",d:"Emoji explorer & picker",s:"new",g:1},
-{e:"🤖",n:"openbot",c:"tools",d:"Open robot platform",s:"new",g:1},
-// fun (5)
-{e:"🐄",n:"cowsay",c:"fun",d:"CowSay Kids — Islamic themes, cipher modes, Quran explorer",s:"stable",g:1},
-{e:"⏰",n:"time-machine",c:"fun",d:"Time machine interactive experience",s:"new",g:1},
-{e:"📡",n:"morse-lab",c:"fun",d:"Morse code interactive learning (encode, decode, tap, BLE)",s:"stable",g:0},
-{e:"🛰️",n:"satellites",c:"fun",d:"Real-time satellite tracking",s:"new",g:1},
-{e:"✈️",n:"flight-tracker",c:"fun",d:"Real-time flight tracking",s:"new",g:1},
-// infra (5)
-{e:"⛽",n:"ocpp",c:"infra",d:"EV charging OCPP simulator (CSMS+Station+EV, v3.0, 16K lines)",s:"stable",g:1},
-{e:"📻",n:"sdr-lab",c:"infra",d:"Software Defined Radio educational app",s:"dev",g:0},
-{e:"🗄️",n:"reddis",c:"infra",d:"Redis experiments",s:"new",g:1},
-{e:"🔥",n:"firebase",c:"infra",d:"Firebase integration tools",s:"new",g:1},
-{e:"📦",n:"ota",c:"infra",d:"Over-the-air firmware update tools",s:"new",g:1},
-// meta (6)
-{e:"🏗️",n:"workshop-diy",c:"meta",d:"The official Workshop-DIY website",s:"stable",g:1},
-{e:"🏠",n:"apps",c:"meta",d:"The Workshop-DIY hub — browse all mini-apps",s:"stable",g:1},
-{e:"🎬",n:"pranky-kids",c:"meta",d:"165+ funny presentation files (EN/FR/AR) + video kit",s:"stable",g:1},
-{e:"🗺️",n:"roadmaps",c:"meta",d:"Project roadmaps collection",s:"new",g:1},
-{e:"🎨",n:"workshop-diy-logos",c:"meta",d:"Logo files and branding assets (SVG, PNG, ICO)",s:"stable",g:0},
-{e:"✊",n:"hacktivist-kids",c:"meta",d:"Ethical hacking educational app (v3.0, password-protected)",s:"stable",g:1},
-// standalone tools (9)
-{e:"🔍",n:"callgraph-web",c:"standalone",d:"Source code function call graph visualizer (web)",s:"stable",g:0},
-{e:"📸",n:"workshop-post-gen",c:"standalone",d:"Facebook post image generator for Workshop-DIY (V6.0)",s:"stable",g:0},
-{e:"🎮",n:"brawl-stars",c:"standalone",d:"Bashira — Brawl Stars competitive analytics dashboard",s:"stable",g:0},
-{e:"⌨️",n:"WebKVM",c:"standalone",d:"Web-based keyboard/mouse sharing (Rust + WebRTC)",s:"dev",g:0},
-{e:"🔒",n:"VeraCrypt-Locker",c:"standalone",d:"PowerShell VeraCrypt volume manager",s:"stable",g:0},
-{e:"📁",n:"Lock-Folder",c:"standalone",d:"PowerShell folder lock/hide script",s:"stable",g:0},
-{e:"🧹",n:"Clear-MyActivities",c:"standalone",d:"PowerShell script to clean PC activities",s:"stable",g:0},
-{e:"💼",n:"LinkedIn-Kit",c:"standalone",d:"LinkedIn prospection kit (profile + strategy)",s:"stable",g:0},
-{e:"🎯",n:"Alicante-Presentation",c:"standalone",d:"Spanish tourism presentation (PPTX + oral guide)",s:"stable",g:0},
-// planned (2)
-{e:"📺",n:"meridian",c:"planned",d:"Islamic YouTube-like video platform (21-phase roadmap)",s:"planned",g:0},
-{e:"🕌",n:"athkari-youssef",c:"planned",d:"Islamic invocations app (for Youssef)",s:"planned",g:0},
-// other github repos (5)
-{e:"🌐",n:"ngrok",c:"tools",d:"Ngrok tunneling tool",s:"new",g:1},
-{e:"🐍",n:"python3",c:"tools",d:"Python 3 experiments",s:"new",g:1},
-{e:"🎭",n:"playwright",c:"tools",d:"Playwright browser testing",s:"new",g:1},
-{e:"💻",n:"tty",c:"tools",d:"Terminal tool",s:"new",g:1},
-{e:"💡",n:"prompt-example",c:"tools",d:"Prompt engineering examples",s:"new",g:1},
+{e:"🏫",n:"classroom",c:"classroom",d:"PeerJS Cloud Classroom Lite (GitHub Pages) — Room code, up to 12 students",s:"stable",g:1},
+{e:"🏫",n:"mission-control",c:"classroom",d:"🚀 MINI MISSION CONTROL (for kids!)",s:"dev",g:1},
+
+// education (15)
+{e:"📚",n:"3d-lab",c:"education",d:"Workshop DIY — 3D Maker Lab",s:"stable",g:1},
+{e:"📚",n:"AI-hacker-lab",c:"education",d:"بسم الله الرحمن الرحيم",s:"stable",g:1},
+{e:"📚",n:"bit-54-activities",c:"education",d:"🎯 Bit-54 Activities",s:"stable",g:1},
+{e:"📚",n:"circuit-lab",c:"education",d:"⚡ Circuit Lab",s:"new",g:1},
+{e:"📚",n:"crypto-academy",c:"education",d:"<p align=\"center\">",s:"stable",g:1},
+{e:"📚",n:"crypto-vault",c:"education",d:"🔐 Crypto Vault",s:"stable",g:1},
+{e:"📚",n:"esp32-c3-kids-lab",c:"education",d:"<p align=\"center\">",s:"stable",g:1},
+{e:"📚",n:"git-lab",c:"education",d:"<p align=\"center\">",s:"new",g:1},
+{e:"📚",n:"linux-kids-lab",c:"education",d:"<p align=\"center\">",s:"stable",g:1},
+{e:"📚",n:"makecode-adventures",c:"education",d:"🤖 MakeCode Adventures — Learn to Code with MakeCode!",s:"new",g:1},
+{e:"📚",n:"pentest-lab",c:"education",d:"☠️ PenTest Lab — Your Cybersecurity Adventure! 🚀",s:"stable",g:1},
+{e:"📚",n:"production-chain",c:"education",d:"Production Chain — All-in-Docker",s:"stable",g:1},
+{e:"📚",n:"save-our-planet",c:"education",d:"🌍 Save Our Planet — v1.0",s:"stable",g:1},
+{e:"📚",n:"web-kids",c:"education",d:"🚀 CodeKids v4",s:"stable",g:1},
+{e:"📚",n:"wled-kids-lab",c:"education",d:"<p align=\"center\">",s:"stable",g:1},
+
+// fun (4)
+{e:"🎮",n:"flight-tracker",c:"fun",d:"✈️ Planes in the Sky — v1.0",s:"stable",g:1},
+{e:"🎮",n:"morse-code",c:"fun",d:"📡 Morse Kids Lab — v1.2",s:"stable",g:1},
+{e:"🎮",n:"satellites",c:"fun",d:"🛰️ Satellites in the Sky — v1.0",s:"stable",g:1},
+{e:"🎮",n:"time-machine",c:"fun",d:"آلة الزمن — Time Machine v1.0",s:"stable",g:1},
+
+// infra (8)
+{e:"🔧",n:"evic-toolkit",c:"infra",d:"No description",s:"stable",g:1},
+{e:"🔧",n:"firebase",c:"infra",d:"No description",s:"new",g:1},
+{e:"🔧",n:"firmware-update",c:"infra",d:"No description",s:"stable",g:1},
+{e:"🔧",n:"nearpay",c:"infra",d:"NearPay — Le paiement à portée de main",s:"stable",g:1},
+{e:"🔧",n:"ocpp",c:"infra",d:"⚡ OCPP Ecosystem v3.0",s:"stable",g:1},
+{e:"🔧",n:"ota",c:"infra",d:"No description",s:"new",g:1},
+{e:"🔧",n:"reddis",c:"infra",d:"No description",s:"new",g:1},
+{e:"🔧",n:"sdr-lab",c:"infra",d:"📡 SDR Kids Lab v1.0.0",s:"stable",g:1},
+
+// meta (12)
+{e:"📦",n:"apps",c:"meta",d:"Workshop-Diy Kids Hub 🎮🌙",s:"stable",g:1},
+{e:"📦",n:"flyers",c:"meta",d:"📄 Flyers",s:"stable",g:1},
+{e:"📦",n:"hacktivist-kids",c:"meta",d:"🎭 HACKTIVIST KIDS v2.0 ULTRA",s:"stable",g:1},
+{e:"📦",n:"ops-catalog",c:"meta",d:"Workshop-DIY Ops Catalog",s:"stable",g:1},
+{e:"📦",n:"ops-catalog-islamic-kids-apps",c:"meta",d:"تطبيقات إسلامية للأطفال",s:"stable",g:1},
+{e:"📦",n:"ops-catalog-islamic-kids-quizzes",c:"meta",d:"اختبارات إسلامية للأطفال",s:"stable",g:1},
+{e:"📦",n:"ops-catalog-kids-apps",c:"meta",d:"تطبيقات تعليمية للأطفال",s:"stable",g:1},
+{e:"📦",n:"ops-catalog-kids-quizzes",c:"meta",d:"اختبارات تعليمية للأطفال",s:"stable",g:1},
+{e:"📦",n:"posts",c:"meta",d:"Workshop-DIY — Générateur de Posts V6.0",s:"stable",g:1},
+{e:"📦",n:"presentation",c:"meta",d:"Workshop-DIY — Apps",s:"stable",g:1},
+{e:"📦",n:"warsha",c:"meta",d:"Warsha ورشة v1.3",s:"stable",g:1},
+{e:"📦",n:"workshop-diy",c:"meta",d:"<p align=\"center\">",s:"stable",g:1},
+
+// micro:bit (10)
+{e:"🤖",n:"bit-bot",c:"microbit",d:"🤖 Talking Robot V2",s:"stable",g:1},
+{e:"🤖",n:"bit-playground",c:"microbit",d:"🎮 micro:bit Playground",s:"stable",g:1},
+{e:"🤖",n:"bitmoji-lab",c:"microbit",d:"🎨 BITMOJI-LAB 🚀",s:"stable",g:1},
+{e:"🤖",n:"ble-dashboard",c:"microbit",d:"BLE Dashboard v1.0",s:"stable",g:1},
+{e:"🤖",n:"ble-logger",c:"microbit",d:"📡 BLE Logger",s:"dev",g:1},
+{e:"🤖",n:"face-tracking",c:"microbit",d:"😊 Face Tracking – Kids Edition",s:"stable",g:1},
+{e:"🤖",n:"rxy",c:"microbit",d:"🎮 Micro:bit Remote Builder",s:"stable",g:1},
+{e:"🤖",n:"talking-robot",c:"microbit",d:"🤖 TALKING ROBOT",s:"stable",g:1},
+{e:"🤖",n:"teachable-machine",c:"microbit",d:"🤖 Teachable Machine → Micro-Bit",s:"stable",g:1},
+{e:"🤖",n:"usb-logger",c:"microbit",d:"🎮 micro:bit Serial Logger 🎮",s:"stable",g:1},
+
+// network (13)
+{e:"🌐",n:"avahi",c:"network",d:"No description",s:"new",g:1},
+{e:"🌐",n:"bonjour",c:"network",d:"🌐 Bonjour Kids Lab v1.0.0",s:"stable",g:1},
+{e:"🌐",n:"dhcp-lab",c:"network",d:"⬡ DHCP Lab v1.2",s:"stable",g:1},
+{e:"🌐",n:"docker-lab",c:"network",d:"No description",s:"new",g:1},
+{e:"🌐",n:"hackrf-one",c:"network",d:"No description",s:"new",g:1},
+{e:"🌐",n:"mdns",c:"network",d:"No description",s:"new",g:1},
+{e:"🌐",n:"mqtt-lab",c:"network",d:"📡 MQTT Kids Lab",s:"dev",g:1},
+{e:"🌐",n:"nodered-lab",c:"network",d:"No description",s:"new",g:1},
+{e:"🌐",n:"pyshark",c:"network",d:"No description",s:"new",g:1},
+{e:"🌐",n:"scapy",c:"network",d:"📦 Scapy Kids Lab",s:"stable",g:1},
+{e:"🌐",n:"sniffers-sallae",c:"network",d:"No description",s:"stable",g:1},
+{e:"🌐",n:"tshark",c:"network",d:"No description",s:"new",g:1},
+{e:"🌐",n:"wifi-dashboard",c:"network",d:"WiFi Dashboard",s:"stable",g:1},
+
+// standalone (5)
+{e:"💼",n:"PlanPilot",c:"standalone",d:"PlanPilot -- Gestionnaire de taches intelligent avec planification automatique",s:"stable",g:1},
+{e:"💼",n:"callgraph",c:"standalone",d:"Callgraph Studio",s:"stable",g:1},
+{e:"💼",n:"gmail-lab",c:"standalone",d:"Gmail Lab — Workshop DIY",s:"stable",g:1},
+{e:"💼",n:"linkedin",c:"standalone",d:"Job Search Portfolio v2.0",s:"stable",g:1},
+{e:"💼",n:"passassion-report",c:"standalone",d:"passation pr133",s:"new",g:1},
+
+// tools (29)
+{e:"🛠️",n:"bash-toolkit",c:"tools",d:"No description",s:"stable",g:1},
+{e:"🛠️",n:"browsers-secrets",c:"tools",d:"🔭 Browsers Secrets — Workshop DIY",s:"stable",g:1},
+{e:"🛠️",n:"dir-pulse",c:"tools",d:"DirPulse v1.6",s:"stable",g:1},
+{e:"🛠️",n:"emojis",c:"tools",d:"📖 EmojiFlow — readme.md",s:"dev",g:1},
+{e:"🛠️",n:"git-date-rewrite",c:"tools",d:"Git Date Rewriter v3.0",s:"stable",g:1},
+{e:"🛠️",n:"git-pulse",c:"tools",d:"بسم الله الرحمن الرحيم",s:"stable",g:1},
+{e:"🛠️",n:"loggy",c:"tools",d:"Loggy V7.3",s:"stable",g:1},
+{e:"🛠️",n:"mac-weird-keys",c:"tools",d:"Mac Weird Keys",s:"stable",g:1},
+{e:"🛠️",n:"meridian",c:"tools",d:"<div align=\"center\">",s:"planned",g:1},
+{e:"🛠️",n:"mushkilat",c:"tools",d:"📖 مشكلات في طريق الحياة الإسلامية — Problems on the Islamic Path",s:"stable",g:1},
+{e:"🛠️",n:"ngrok",c:"tools",d:"No description",s:"new",g:1},
+{e:"🛠️",n:"openbot",c:"tools",d:"No description",s:"new",g:1},
+{e:"🛠️",n:"pixel-gateway",c:"tools",d:"PixelGateway",s:"dev",g:1},
+{e:"🛠️",n:"playwright",c:"tools",d:"No description",s:"new",g:1},
+{e:"🛠️",n:"puppeteer-playground",c:"tools",d:"🎭 Puppeteer Playground",s:"dev",g:1},
+{e:"🛠️",n:"python3",c:"tools",d:"No description",s:"new",g:1},
+{e:"🛠️",n:"qrcodes",c:"tools",d:"No description",s:"new",g:1},
+{e:"🛠️",n:"rocket-shield-vpn",c:"tools",d:"🚀 Rocket Shield VPN — Learn VPN Like a Space Commander!",s:"stable",g:1},
+{e:"🛠️",n:"sanitize-names-toolkit",c:"tools",d:"🧹 Sanitize Names Toolkit",s:"stable",g:1},
+{e:"🛠️",n:"smart-home",c:"tools",d:"<p align=\"center\">",s:"stable",g:1},
+{e:"🛠️",n:"sync-files",c:"tools",d:"🔄 SyncFiles",s:"dev",g:1},
+{e:"🛠️",n:"taamulat",c:"tools",d:"🌿 Reflections on Religion & Life — تأملات في الدين والحياة",s:"stable",g:1},
+{e:"🛠️",n:"termlite",c:"tools",d:"TermLite v1.0",s:"stable",g:1},
+{e:"🛠️",n:"tools",c:"tools",d:"🛠️ Workshop-DIY — Project Toolkit v1.2",s:"stable",g:1},
+{e:"🛠️",n:"true-crypt",c:"tools",d:"TrueCrypt-Web",s:"stable",g:1},
+{e:"🛠️",n:"tty",c:"tools",d:"Version: see `version.py` — single source of truth for app name & version.",s:"stable",g:1},
+{e:"🛠️",n:"virus",c:"tools",d:"No description",s:"new",g:1},
+{e:"🛠️",n:"web-developer-toolkit",c:"tools",d:"🛠️ Web Developer Toolkit v1.0",s:"stable",g:1},
+{e:"🛠️",n:"web-kvm",c:"tools",d:"⌨ WebKVM",s:"stable",g:1},
 ];
+
 
 const CATS={
   microbit:{emoji:"🤖",name:"micro:bit",color:"var(--teal)"},
@@ -458,6 +546,7 @@ const CATS={
   infra:{emoji:"🔧",name:"Infra & Backend",color:"var(--dim)"},
   meta:{emoji:"📦",name:"Meta & Project",color:"var(--muted)"},
   standalone:{emoji:"💼",name:"Standalone Tools",color:"var(--sky)"},
+  books:{emoji:"📚",name:"Islamic Books",color:"var(--emerald)"},
   planned:{emoji:"📋",name:"Planned",color:"var(--muted)"}
 };
 
@@ -810,11 +899,17 @@ function exportCSV(){
 
 // ═══ INIT ═══
 (function init(){
+  // Compute stats
+  const usedCats=Object.keys(CATS).filter(k=>APPS.some(a=>a.c===k));
+  document.getElementById('statTotal').textContent=APPS.length;
+  document.getElementById('statCats').textContent=usedCats.length;
+  document.getElementById('statRepos').textContent=APPS.filter(a=>a.g).length;
   // Build filter buttons
   let fh='';
-  Object.entries(CATS).forEach(([k,v])=>{
+  usedCats.forEach(k=>{
+    const v=CATS[k];
     const c=APPS.filter(a=>a.c===k).length;
-    if(c)fh+=`<button class="fbtn" data-cat="${k}" onclick="toggleFilter(this)">${v.emoji} ${v.name}</button>`;
+    fh+=`<button class="fbtn" data-cat="${k}" onclick="toggleFilter(this)">${v.emoji} ${v.name}</button>`;
   });
   document.getElementById('filters').innerHTML=fh;
   document.getElementById('appcount').textContent=APPS.length+' / '+APPS.length+' apps';
